@@ -11,12 +11,12 @@ namespace Furion.Extras.Admin.NET
         /// 是
         /// </summary>
         [Description("是")]
-        Y = 0,
+        Y = 1,
 
         /// <summary>
         /// 否
         /// </summary>
         [Description("否")]
-        N = 1
+        N = 0
     }
 }
