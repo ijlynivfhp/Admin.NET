@@ -301,25 +301,25 @@ namespace Furion.Extras.Admin.NET.Service
             switch (fileLocation)
             {
                 case FileLocation.ALIYUN:
-                    var filePath = string.Concat(pathType, "/", finalName);
+                    var filePath = string.Concat(path, "/", finalName);
                     var stream = file.OpenReadStream();
                     await _oSSServiceFactory.Create("aliyun").PutObjectAsync(bucketName, filePath, stream);
                     break;
 
                 case FileLocation.TENCENT:
-                    var filePath1 = string.Concat(pathType, "/", finalName);
+                    var filePath1 = string.Concat(path, "/", finalName);
                     var stream1 = file.OpenReadStream();
                     await _oSSServiceFactory.Create("qcloud").PutObjectAsync(bucketName, filePath1, stream1);
                     break;
 
                 case FileLocation.MINIO:
-                    var filePath2 = string.Concat(pathType, "/", finalName);
+                    var filePath2 = string.Concat(path, "/", finalName);
                     var stream2 = file.OpenReadStream();
                     await _oSSServiceFactory.Create().PutObjectAsync(bucketName, filePath2, stream2);
                     break;
 
                 default:
-                    var filePath4 = Path.Combine(App.WebHostEnvironment.WebRootPath, pathType);
+                    var filePath4 = Path.Combine(App.WebHostEnvironment.WebRootPath, path);
                     if (!Directory.Exists(filePath4))
                         Directory.CreateDirectory(filePath4);
                     using (var stream4 = File.Create(Path.Combine(filePath4, finalName)))
